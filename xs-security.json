@@ -1,0 +1,43 @@
+{
+  "xsappname": "helloMta",
+  "tenant-mode": "dedicated",
+  "description": "Security profile of called application",
+  "scopes": [
+    {
+      "name": "uaa.user",
+      "description": "UAA"
+    },
+    {
+    	"name": "$XSAPPNAME.Display",
+    	"description": "display ui"
+    }, 
+    {
+    	"name": "$XSAPPNAME.Admin",
+    	"description": "Manage ui"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "Token_Exchange",
+      "description": "UAA",
+      "scope-references": [
+        "uaa.user"
+      ]
+    },
+    {
+      "name": "Display_RoleTemplate",
+      "description": "display",
+      "scope-references": [
+        "$XSAPPNAME.Display"
+      ]
+    },
+    {
+      "name": "Mng_RoleTemplate",
+      "description": "display",
+      "scope-references": [
+        "$XSAPPNAME.Display",
+        "$XSAPPNAME.Admin"
+      ]
+    }
+  ]
+}
